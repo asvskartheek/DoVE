@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "1058660018992",
+    "firebase_url": "https://innovision-ee140.firebaseio.com",
+    "project_id": "innovision-ee140",
+    "storage_bucket": "innovision-ee140.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058660018992:android:8be37b2dc33d7ef8",
+        "android_client_info": {
+          "package_name": "com.innovision.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058660018992-72udfhsr77pusofh1r7jl5udd6oc0fu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4qp9OnFB-4wUM3B299ZBO84z_YIygR7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058660018992:android:192f912649412eec",
+        "android_client_info": {
+          "package_name": "com.example.noob.innovision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058660018992-nit9gjocca6a7k3mok8n0hc13rrmvlpo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.noob.innovision",
+            "certificate_hash": "3a14f186353e356eed8f3516ab2529f41e57ecaf"
+          }
+        },
+        {
+          "client_id": "1058660018992-72udfhsr77pusofh1r7jl5udd6oc0fu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4qp9OnFB-4wUM3B299ZBO84z_YIygR7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058660018992-72udfhsr77pusofh1r7jl5udd6oc0fu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058660018992:android:f8d8ff89e11119ce",
+        "android_client_info": {
+          "package_name": "com.example.kartheek.dove"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058660018992-qgqtjcul6huclgphm0ac363ajclvkifo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kartheek.dove",
+            "certificate_hash": "ed231c89c357cc77a679e0b41eec4814b4553809"
+          }
+        },
+        {
+          "client_id": "1058660018992-72udfhsr77pusofh1r7jl5udd6oc0fu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4qp9OnFB-4wUM3B299ZBO84z_YIygR7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058660018992-72udfhsr77pusofh1r7jl5udd6oc0fu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
