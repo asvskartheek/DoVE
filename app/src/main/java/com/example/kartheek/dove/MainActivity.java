@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String present_name = dataSnapshot.child("perName").getValue(String.class);
-                        if (present_name!=uid){
+                        if (!present_name.equals(uid)){
                             for (int i = 19;i>1;--i){
                                 String value = "his"+i;
                                 int prev_int = i-1;

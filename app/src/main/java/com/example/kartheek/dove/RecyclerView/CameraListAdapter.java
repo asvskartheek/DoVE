@@ -1,12 +1,16 @@
 package com.example.kartheek.dove.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.kartheek.dove.HistoryActivity;
 import com.example.kartheek.dove.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,8 +39,7 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item,parent,false);
-
-        return new CameraListViewHolder(view);
+        return new CameraListViewHolder(view,context);
     }
 
     @Override
@@ -54,12 +57,28 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
 
         TextView mCameraName, mPersonName, mTimeStamp;
 
-        CameraListViewHolder(View itemView){
+        Context context;
+
+        CameraListViewHolder(final View itemView,final Context context){
             super(itemView);
 
             mCameraName = itemView.findViewById(R.id.item_name);
             mPersonName = itemView.findViewById(R.id.person_name);
             mTimeStamp = itemView.findViewById(R.id.time_stamp);
+
+            this.context = context;
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Intent intent=new Intent(context,HistoryActivity.class);
+                    intent.putExtra("type","Camera");
+                    intent.putExtra("number",position);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         void bind(final int position){

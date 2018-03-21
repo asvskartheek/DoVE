@@ -1,12 +1,14 @@
 package com.example.kartheek.dove.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kartheek.dove.HistoryActivity;
 import com.example.kartheek.dove.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.item,parent,false);
 
-            return new com.example.kartheek.dove.RecyclerView.TripodListAdapter.TripodListViewHolder(view);
+            return new TripodListAdapter.TripodListViewHolder(view,context);
         }
 
         @Override
@@ -52,13 +54,27 @@ import com.google.firebase.database.ValueEventListener;
         class TripodListViewHolder extends RecyclerView.ViewHolder{
 
             TextView mTripodName, mPersonName, mTimeStamp;
+            Context context;
 
-            TripodListViewHolder(View itemView){
+            TripodListViewHolder(View itemView,final Context context){
                 super(itemView);
 
                 mTripodName = itemView.findViewById(R.id.item_name);
                 mPersonName = itemView.findViewById(R.id.person_name);
                 mTimeStamp = itemView.findViewById(R.id.time_stamp);
+
+                this.context = context;
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int position = getAdapterPosition();
+                        Intent intent=new Intent(context,HistoryActivity.class);
+                        intent.putExtra("type","Memory");
+                        intent.putExtra("number",position);
+                        context.startActivity(intent);
+                    }
+                });
             }
 
             void bind(final int position){
