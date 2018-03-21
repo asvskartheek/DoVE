@@ -2,11 +2,13 @@ package com.example.kartheek.dove.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +58,7 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
     class CameraListViewHolder extends RecyclerView.ViewHolder{
 
         TextView mCameraName, mPersonName, mTimeStamp;
-
+        Button mCallBtn;
         Context context;
 
         CameraListViewHolder(final View itemView,final Context context){
@@ -65,9 +67,9 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
             mCameraName = itemView.findViewById(R.id.item_name);
             mPersonName = itemView.findViewById(R.id.person_name);
             mTimeStamp = itemView.findViewById(R.id.time_stamp);
+            mCallBtn = itemView.findViewById(R.id.call_btn);
 
             this.context = context;
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                                 String value = "his"+i;
                                 int prev_int = i-1;
                                 String prev = "his"+prev_int;
-                                //TODO: Run this only once
                                 String prev_hehe = dataSnapshot.child(prev).getValue(String.class);
                                 String hehe = dataSnapshot.child(value).getValue(String.class);
                                 myRef.child(value).setValue(prev_hehe);
