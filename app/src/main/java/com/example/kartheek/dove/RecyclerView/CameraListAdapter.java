@@ -68,8 +68,8 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String value = dataSnapshot.child("Cameras").child("Camera"+position).child("perName").getValue(String.class);
-                    mTimeStamp.setText(dataSnapshot.child("Cameras").child("Camera"+position).child("time").getValue(String.class));
+                    String value = dataSnapshot.child("Camera"+position).child("perName").getValue(String.class);
+                    mTimeStamp.setText(dataSnapshot.child("Camera"+position).child("time").getValue(String.class));
                     mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                 }
 

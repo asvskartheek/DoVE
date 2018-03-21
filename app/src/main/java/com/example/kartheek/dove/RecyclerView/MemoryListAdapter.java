@@ -45,7 +45,7 @@ public class MemoryListAdapter extends RecyclerView.Adapter<MemoryListAdapter.Me
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 3;
     }
 
 
@@ -67,8 +67,8 @@ public class MemoryListAdapter extends RecyclerView.Adapter<MemoryListAdapter.Me
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String value = dataSnapshot.child("Memorys").child("Memory"+position).child("perName").getValue(String.class);
-                    mTimeStamp.setText(dataSnapshot.child("Memorys").child("Memory"+position).child("time").getValue(String.class));
+                    String value = dataSnapshot.child("Memory"+position).child("perName").getValue(String.class);
+                    mTimeStamp.setText(dataSnapshot.child("Memory"+position).child("time").getValue(String.class));
                     mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                 }
 

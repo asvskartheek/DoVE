@@ -1,20 +1,15 @@
 package com.example.kartheek.dove;
 
+import android.app.Fragment;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kartheek.dove.RecyclerView.CameraListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,19 +38,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         //This part is for adding Name
         mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser()!=null) {
+        if (mAuth.getCurrentUser() != null) {
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uid = mAuth.getCurrentUser().getUid();
                     String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
-                    String text = "Hi! "+ name;
-                    //TextView mText = findViewById(R.id.tv_camera);
-                    //mText.setText(text);
+                    String text = "Hi! " + name;
+                    TextView mText = findViewById(R.id.tv_camera);
+                    mText.setText(text);
                 }
 
                 @Override
@@ -73,41 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         mTabLayout = (TabLayout) findViewById(R.id.main_tabs);
         mTabLayout.setupWithViewPager(mViewPager);
-
-
-/*
-        //This part is for scanning QR Code
-        FloatingActionButton mTakeCamBtn = findViewById(R.id.take_camera_btn);
-        mTakeCamBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("SCAN");
-                integrator.setCameraId(0);
-                integrator.setBeepEnabled(true);
-                integrator.setBarcodeImageEnabled(false);
-                integrator.initiateScan();
-            }
-        });
-
-        RecyclerView mCameraList = findViewById(R.id.rV_camera);
-
-        mCameraList.setHasFixedSize(true);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mCameraList.setLayoutManager(layoutManager);
-
-
-        //Change the adapter according to item
-        CameraListAdapter mAdapter = new CameraListAdapter(2);
-        mCameraList.setAdapter(mAdapter);
-
-        */
     }
 
-    /*
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
@@ -119,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                 //Change Camers to Items
-                DatabaseReference myRef = database.getReference().child("Cameras").child(result.getContents());
+                DatabaseReference myRef = database.getReference().child(result.getContents());
 
                 myRef.child("perName").setValue(mCurrentUser.getUid());
                 myRef.child("time").setValue( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -127,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
     }
-    */
 }
+

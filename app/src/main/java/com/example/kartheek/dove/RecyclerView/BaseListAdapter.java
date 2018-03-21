@@ -45,7 +45,7 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 2;
     }
 
 
@@ -67,8 +67,8 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String value = dataSnapshot.child("Bases").child("Base"+position).child("perName").getValue(String.class);
-                    mTimeStamp.setText(dataSnapshot.child("Bases").child("Base"+position).child("time").getValue(String.class));
+                    String value = dataSnapshot.child("Base"+position).child("perName").getValue(String.class);
+                    mTimeStamp.setText(dataSnapshot.child("Base"+position).child("time").getValue(String.class));
                     mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                 }
 

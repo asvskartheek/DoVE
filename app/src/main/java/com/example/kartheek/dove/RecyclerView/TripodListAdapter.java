@@ -45,7 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 
         @Override
         public int getItemCount() {
-            return 5;
+            return 4;
         }
 
 
@@ -67,8 +67,8 @@ import com.google.firebase.database.ValueEventListener;
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String value = dataSnapshot.child("Tripods").child("Tripod"+position).child("perName").getValue(String.class);
-                        mTimeStamp.setText(dataSnapshot.child("Tripods").child("Tripod"+position).child("time").getValue(String.class));
+                        String value = dataSnapshot.child("Tripod"+position).child("perName").getValue(String.class);
+                        mTimeStamp.setText(dataSnapshot.child("Tripod"+position).child("time").getValue(String.class));
                         mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                     }
 
