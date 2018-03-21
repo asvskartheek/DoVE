@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 //Change Camers to Items
                 DatabaseReference myRef = database.getReference().child(result.getContents());
 
+                for (int i = 19;i>0;--i){
+                    String value = "his";
+                }
                 myRef.child("perName").setValue(mCurrentUser.getUid());
                 myRef.child("time").setValue( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 Toast.makeText(MainActivity.this,result.getContents(),Toast.LENGTH_LONG).show();
