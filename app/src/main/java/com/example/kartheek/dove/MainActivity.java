@@ -2,11 +2,15 @@ package com.example.kartheek.dove;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +30,18 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+    private Toolbar mToolbar;
+
+    private ViewPager mViewPager;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         //This part is for adding Name
@@ -44,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     String uid = mAuth.getCurrentUser().getUid();
                     String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
                     String text = "Hi! "+ name;
-                    TextView mText = findViewById(R.id.tv_camera);
-                    mText.setText(text);
+                    //TextView mText = findViewById(R.id.tv_camera);
+                    //mText.setText(text);
                 }
 
                 @Override
@@ -55,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        //Tabs
+        mViewPager = findViewById(R.id.main_tabPager);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mTabLayout = (TabLayout) findViewById(R.id.main_tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+
+/*
         //This part is for scanning QR Code
         FloatingActionButton mTakeCamBtn = findViewById(R.id.take_camera_btn);
         mTakeCamBtn.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +102,11 @@ public class MainActivity extends AppCompatActivity {
         //Change the adapter according to item
         CameraListAdapter mAdapter = new CameraListAdapter(2);
         mCameraList.setAdapter(mAdapter);
+
+        */
     }
 
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -105,4 +129,5 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+    */
 }
