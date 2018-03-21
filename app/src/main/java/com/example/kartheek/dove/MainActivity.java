@@ -80,11 +80,33 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                 //Change Camers to Items
-                DatabaseReference myRef = database.getReference().child(result.getContents());
+                final DatabaseReference myRef = database.getReference().child(result.getContents());
 
-                for (int i = 19;i>0;--i){
-                    String value = "his";
-                }
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean flag = false;
+                        if (!flag){
+                            for (int i = 19;i>1;--i){
+                                String value = "his"+i;
+                                int prev_int = i-1;
+                                //TODO: Run this only once
+                                String prev_hehe = dataSnapshot.child(prev).getValue(String.class);
+                                String hehe = dataSnapshot.child(value).getValue(String.class);
+                                myRef.child(value).setValue(prev_hehe);
+                            }
+                            String prev_hehe = dataSnapshot.child("perName").getValue(String.class);
+                            myRef.child("his1").setValue(prev_hehe);
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 myRef.child("perName").setValue(mCurrentUser.getUid());
                 myRef.child("time").setValue( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 Toast.makeText(MainActivity.this,result.getContents(),Toast.LENGTH_LONG).show();
