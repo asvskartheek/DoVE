@@ -68,7 +68,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     int position_sudo = position+1;
-                    mPersonName.setText(dataSnapshot.child(type+number).child("his"+position_sudo).getValue(String.class));
+                    String value = dataSnapshot.child(type+number).child("his"+position_sudo).getValue(String.class);
+                    if(!value.equals("")) {
+                        mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
+                    }
                 }
 
                 @Override
