@@ -25,39 +25,18 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Toolbar mToolbar;
 
     private ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private TabLayout mTabLayout;
+    private String uid = mAuth.getCurrentUser().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //This part is for adding Name
-        mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
-            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    String uid = mAuth.getCurrentUser().getUid();
-                    String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
-                    String text = "Hi! " + name;
-                    TextView mText = findViewById(R.id.tv_camera);
-                    mText.setText(text);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
 
         //Tabs
         mViewPager = findViewById(R.id.main_tabPager);
@@ -79,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                //Change Camers to Items
                 final DatabaseReference myRef = database.getReference().child(result.getContents());
 
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        boolean flag = false;
-                        if (!flag){
+                        String present_name = dataSnapshot.child("perName").getValue(String.class);
+                        if (present_name!=uid){
                             for (int i = 19;i>1;--i){
                                 String value = "his"+i;
                                 int prev_int = i-1;
+                                String prev = "his"+prev_int;
                                 //TODO: Run this only once
                                 String prev_hehe = dataSnapshot.child(prev).getValue(String.class);
                                 String hehe = dataSnapshot.child(value).getValue(String.class);
