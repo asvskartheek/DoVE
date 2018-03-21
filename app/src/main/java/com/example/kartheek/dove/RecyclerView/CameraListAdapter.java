@@ -58,7 +58,6 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
     class CameraListViewHolder extends RecyclerView.ViewHolder{
 
         TextView mCameraName, mPersonName, mTimeStamp;
-        Button mCallBtn;
         Context context;
 
         CameraListViewHolder(final View itemView,final Context context){
@@ -67,7 +66,6 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
             mCameraName = itemView.findViewById(R.id.item_name);
             mPersonName = itemView.findViewById(R.id.person_name);
             mTimeStamp = itemView.findViewById(R.id.time_stamp);
-            mCallBtn = itemView.findViewById(R.id.call_btn);
 
             this.context = context;
 
