@@ -20,7 +20,7 @@ public class HistoryActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(HistoryActivity.this);
         mHistoryList.setLayoutManager(layoutManager);
 
-        HistoryAdapter mAdapter = new HistoryAdapter(20);
+        HistoryAdapter mAdapter = new HistoryAdapter(19);
         mHistoryList.setAdapter(mAdapter);
     }
 }

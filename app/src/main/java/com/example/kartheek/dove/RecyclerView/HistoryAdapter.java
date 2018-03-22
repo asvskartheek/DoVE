@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kartheek.dove.R;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +46,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     @Override
     public int getItemCount() {
-        return 20;
+        return 19;
     }
 
     class HistoryViewHolder extends RecyclerView.ViewHolder{
@@ -68,10 +70,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     int position_sudo = position+1;
-                    String value = dataSnapshot.child(type+number).child("his"+position_sudo).getValue(String.class);
-                    if(!value.equals("")) {
+                    String child = type.concat(Integer.toString(number));
+                    String value = dataSnapshot.child(child).child("his"+position_sudo).getValue(String.class);
+                    System.out.println(value);
+                    if(!value.equals("u_1")&&!value.equals("u_10")){
                         mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                     }
+                    else {
+                        mPersonName.setText(value);
+                    }
+
                 }
 
                 @Override
