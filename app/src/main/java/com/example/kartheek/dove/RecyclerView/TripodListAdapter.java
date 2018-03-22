@@ -70,7 +70,7 @@ import com.google.firebase.database.ValueEventListener;
                     public void onClick(View view) {
                         int position = getAdapterPosition();
                         Intent intent=new Intent(context,HistoryActivity.class);
-                        intent.putExtra("type","Memory");
+                        intent.putExtra("type","Tripod");
                         intent.putExtra("number",position);
                         context.startActivity(intent);
                     }
