@@ -34,6 +34,14 @@ class SectionsPagerAdapter extends FragmentPagerAdapter{
                 return null;
         }
     }
+    private String tabTitles[] = new String[]{"Cameras", "SD Cards", "Bases","Tripods"};
+
+
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
+    }
 
     @Override
     public int getCount() {
