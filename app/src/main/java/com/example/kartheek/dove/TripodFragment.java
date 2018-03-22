@@ -51,7 +51,7 @@ public class TripodFragment extends Fragment {
                     String uid = mAuth.getCurrentUser().getUid();
                     String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
                     String text = "Hi! " + name;
-                    TextView mText = view.findViewById(R.id.tv_camera);
+                    TextView mText = view.findViewById(R.id.tv_tripod);
                     mText.setText(text);
                 }
 
