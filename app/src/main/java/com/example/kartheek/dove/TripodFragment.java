@@ -10,9 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.kartheek.dove.RecyclerView.CameraListAdapter;
 import com.example.kartheek.dove.RecyclerView.TripodListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 
@@ -32,7 +39,29 @@ public class TripodFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         //This part is for scanning QR Code
-        View view = inflater.inflate(R.layout.fragment_tripod, container, false);
+        final View view = inflater.inflate(R.layout.fragment_tripod, container, false);
+
+        //This part is for adding Name
+        final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String uid = mAuth.getCurrentUser().getUid();
+                    String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
+                    String text = "Hi! " + name;
+                    TextView mText = view.findViewById(R.id.tv_camera);
+                    mText.setText(text);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
         FloatingActionButton mTakeCamBtn = view.findViewById(R.id.take_tripod_btn);
         mTakeCamBtn.setOnClickListener(new View.OnClickListener() {
             @Override
