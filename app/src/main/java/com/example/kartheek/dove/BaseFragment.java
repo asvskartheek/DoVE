@@ -85,7 +85,7 @@ public class BaseFragment extends Fragment {
 
 
         //Change the adapter according to item
-        BaseListAdapter mAdapter = new BaseListAdapter(2);
+        BaseListAdapter mAdapter = new BaseListAdapter(7);
         mCameraList.setAdapter(mAdapter);
 
         return view;

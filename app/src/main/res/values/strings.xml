@@ -11,25 +11,20 @@
         <item>5D mark 4</item>
     </string-array>
 
-    <string-array name="tripod_names">
+    <string-array name="tripod_base_names">
         <item>Benro 1</item>
         <item>Benro 2</item>
         <item>Benro 3</item>
         <item>Slik</item>
         <item>Monopod</item>
-        <item>Phoenix Tripod</item>
-        <item>Ball Mount Tripod</item>
+        <item>Phoenix</item>
+        <item>Ball Mount</item>
     </string-array>
 
     <string-array name="memory_names">
         <item>16GB</item>
         <item>32GB</item>
         <item>64GB</item>
-    </string-array>
-
-    <string-array name="base_names">
-        <item>Eagle Base</item>
-        <item>Monopod Base</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

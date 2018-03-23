@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
         @Override
         public com.example.kartheek.dove.RecyclerView.TripodListAdapter.TripodListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            tripodNames = parent.getResources().getStringArray(R.array.tripod_names);
+            tripodNames = parent.getResources().getStringArray(R.array.tripod_base_names);
             Context context = parent.getContext();
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.item,parent,false);

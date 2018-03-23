@@ -32,7 +32,7 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
     @Override
     public BaseListAdapter.BaseListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        BaseNames = parent.getResources().getStringArray(R.array.base_names);
+        BaseNames = parent.getResources().getStringArray(R.array.tripod_base_names);
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item,parent,false);
@@ -47,7 +47,7 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 7;
     }
 
 
