@@ -51,7 +51,7 @@ public class CameraFragment extends Fragment {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String uid = mAuth.getCurrentUser().getUid();

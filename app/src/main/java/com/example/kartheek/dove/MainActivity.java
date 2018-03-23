@@ -1,15 +1,12 @@
 package com.example.kartheek.dove;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,12 +24,10 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-    private ViewPager mViewPager;
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private TabLayout mTabLayout;
-    private String uid = mAuth.getCurrentUser().getUid();
+    final private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    final private FirebaseUser mCurrentUser = mAuth.getCurrentUser();
+    final private String uid = mCurrentUser.getUid();
+    final private DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,55 +37,57 @@ public class MainActivity extends AppCompatActivity {
         //Tabs
         Toolbar mToolbar = findViewById(R.id.main_page_toolbar);
 
-        mViewPager = findViewById(R.id.main_tabPager);
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        ViewPager mViewPager = findViewById(R.id.main_tabPager);
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        mTabLayout = findViewById(R.id.main_tabs);
+        TabLayout mTabLayout = findViewById(R.id.main_tabs);
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+        final IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if (result!=null){
             if (result.getContents()==null){
                 Toast.makeText(MainActivity.this,"You cancelled the scanning",Toast.LENGTH_LONG).show();
             }else {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-                final DatabaseReference myRef = database.getReference().child(result.getContents());
-
-                myRef.addValueEventListener(new ValueEventListener() {
+                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String present_name = dataSnapshot.child("perName").getValue(String.class);
-                        if (!present_name.equals(uid)){
-                            for (int i = 19;i>1;--i){
-                                String value = "his"+i;
-                                int prev_int = i-1;
-                                String prev = "his"+prev_int;
-                                String prev_hehe = dataSnapshot.child(prev).getValue(String.class);
-                                String hehe = dataSnapshot.child(value).getValue(String.class);
-                                myRef.child(value).setValue(prev_hehe);
-                            }
-                            String prev_hehe = dataSnapshot.child("perName").getValue(String.class);
-                            myRef.child("his1").setValue(prev_hehe);
+                        ItemData old_data = dataSnapshot.child(result.getContents()).getValue(ItemData.class);
+                        String resultName = result.getContents();
+                        String[] part = resultName.split("(?<=\\D)(?=\\d)");
+                        int index = Integer.parseInt(part[1]);
+                        String[] req_arr = getResources().getStringArray(R.array.camera_names);
+                        switch (part[0]){
+                            case "Camera":
+                                req_arr = getResources().getStringArray(R.array.camera_names);
+                                break;
+                            case "Base":
+                            case "Tripod":
+                                req_arr = getResources().getStringArray(R.array.tripod_base_names);
+                               break;
+                            case "Memory":
+                                req_arr = getResources().getStringArray(R.array.memory_names);
+                                break;
+                        }
+                        String item_name = req_arr[index];
+                        if(!old_data.perName.equals(uid)) {
+                            updateData(old_data, result.getContents());
+                            Toast.makeText(MainActivity.this,item_name,Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this,"You already have " + item_name + " rey CHUTIYE!!",Toast.LENGTH_LONG).show();
                         }
                     }
-
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-
-                myRef.child("perName").setValue(mCurrentUser.getUid());
-                myRef.child("time").setValue( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-                Toast.makeText(MainActivity.this,result.getContents(),Toast.LENGTH_LONG).show();
             }
         }
 
@@ -102,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    private void updateData(ItemData old_data,String item){
+        ItemData new_data = new ItemData(old_data, uid);
+
+        mDatabase.child(item).setValue(new_data);
     }
 
 

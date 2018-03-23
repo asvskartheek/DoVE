@@ -31,6 +31,37 @@
         <item>16GB 80Mbps 2</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Camera0">GH5</string>
+    <string name="Camera1">Eagle 1 Flip Loose</string>
+    <string name="Camera2">Eagle 2</string>
+    <string name="Camera3">60D</string>
+    <string name="Camera4">Phoenix</string>
+    <string name="Camera5">Sony Alpha</string>
+    <string name="Camera6">Nikon 3300</string>
+    <string name="Camera7">5D mark 4</string>
+
+    <string name="Base0">Benro 1</string>
+    <string name="Base1">Benro 2</string>
+    <string name="Base2">Benro 3</string>
+    <string name="Base3">Slik</string>
+    <string name="Base4">Monopod</string>
+    <string name="Base5">Phoenix</string>
+    <string name="Base6">Ball Mount</string>
+
+    <string name="Tripod0">Benro 1</string>
+    <string name="Tripod1">Benro 2</string>
+    <string name="Tripod2">Benro 3</string>
+    <string name="Tripod3">Slik</string>
+    <string name="Tripod4">Monopod</string>
+    <string name="Tripod5">Phoenix</string>
+    <string name="Tripod6">Ball Mount</string>
+
+    <string name="Memory0">16GB 48Mbps</string>
+    <string name="Memory1">32GB 95Mbps</string>
+    <string name="Memory2">64GB 95Mbps</string>
+    <string name="Memory3">32GB lexar</string>
+    <string name="Memory4">64GB rental</string>
+    <string name="Memory5">16GB 80Mbps 1</string>
+    <string name="Memory6">16GB 80Mbps 2</string>
+
 </resources>

@@ -17,17 +17,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * Created by kartheek on 17/2/18.
+ * Developed By BlueberryBoy
  */
 
 public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseListViewHolder>{
 
 
-
-    private static int mNoOfItems;
     private String[] BaseNames;
 
-    public BaseListAdapter(int nItems){ mNoOfItems = nItems; }
+    public BaseListAdapter(int nItems){
+    }
 
     @Override
     public BaseListAdapter.BaseListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
