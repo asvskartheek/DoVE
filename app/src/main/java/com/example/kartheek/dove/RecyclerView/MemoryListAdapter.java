@@ -47,7 +47,7 @@ public class MemoryListAdapter extends RecyclerView.Adapter<MemoryListAdapter.Me
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 7;
     }
 
 

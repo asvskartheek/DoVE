@@ -12,7 +12,7 @@
     </string-array>
 
     <string-array name="tripod_base_names">
-        <item>Benro 1</item>
+        <item name="Tripod0">Benro 1</item>
         <item>Benro 2</item>
         <item>Benro 3</item>
         <item>Slik</item>
@@ -22,9 +22,13 @@
     </string-array>
 
     <string-array name="memory_names">
-        <item>16GB</item>
-        <item>32GB</item>
-        <item>64GB</item>
+        <item>16GB 48Mbps</item>
+        <item>32GB 95Mbps</item>
+        <item>64GB 95Mbps</item>
+        <item>32GB lexar</item>
+        <item>64GB rental</item>
+        <item>16GB 80Mbps 1</item>
+        <item>16GB 80Mbps 2</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
