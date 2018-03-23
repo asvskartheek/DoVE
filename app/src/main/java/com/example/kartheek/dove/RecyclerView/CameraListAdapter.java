@@ -51,7 +51,7 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 8;
     }
 
 

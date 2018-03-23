@@ -91,7 +91,7 @@ public class CameraFragment extends Fragment {
 
 
         //Change the adapter according to item
-        CameraListAdapter mAdapter = new CameraListAdapter(2);
+        CameraListAdapter mAdapter = new CameraListAdapter(8);
         mCameraList.setAdapter(mAdapter);
 
         return view;

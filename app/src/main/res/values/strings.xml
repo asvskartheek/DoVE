@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">DoVE</string>
     <string-array name="camera_names">
-        <item>5D</item>
         <item>GH5</item>
+        <item>Eagle 1 Flip Loose</item>
+        <item>Eagle 2</item>
         <item>60D</item>
-        <item>Eagle</item>
         <item>Phoenix</item>
+        <item>Sony Alpha</item>
+        <item>Nikon 3300</item>
+        <item>5D mark 4</item>
     </string-array>
 
     <string-array name="tripod_names">
