@@ -47,7 +47,7 @@ import com.google.firebase.database.ValueEventListener;
 
         @Override
         public int getItemCount() {
-            return 4;
+            return 7;
         }
 
 

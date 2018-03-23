@@ -85,7 +85,7 @@ public class TripodFragment extends Fragment {
 
 
         //Change the adapter according to item
-        TripodListAdapter mAdapter = new TripodListAdapter(2);
+        TripodListAdapter mAdapter = new TripodListAdapter(7);
         mCameraList.setAdapter(mAdapter);
 
         return view;

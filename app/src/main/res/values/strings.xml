@@ -12,10 +12,13 @@
     </string-array>
 
     <string-array name="tripod_names">
-        <item>Benro</item>
+        <item>Benro 1</item>
+        <item>Benro 2</item>
+        <item>Benro 3</item>
         <item>Slik</item>
         <item>Monopod</item>
         <item>Phoenix Tripod</item>
+        <item>Ball Mount Tripod</item>
     </string-array>
 
     <string-array name="memory_names">
