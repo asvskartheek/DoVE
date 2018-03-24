@@ -84,14 +84,13 @@ public class CameraFragment extends Fragment {
 
         RecyclerView mCameraList = view.findViewById(R.id.rV_camera);
 
-        mCameraList.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mCameraList.setLayoutManager(layoutManager);
 
 
         //Change the adapter according to item
-        CameraListAdapter mAdapter = new CameraListAdapter(8);
+        CameraListAdapter mAdapter = new CameraListAdapter(9);
         mCameraList.setAdapter(mAdapter);
 
         return view;

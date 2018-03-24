@@ -40,7 +40,7 @@ public class ItemData {
         this.his17=old.his16;
         this.his18=old.his17;
         this.his19=old.his18;
-        this.time=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        this.time=new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date());
     }
 
 }

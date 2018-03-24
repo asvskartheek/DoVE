@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateData(ItemData old_data,String item){
         ItemData new_data = new ItemData(old_data, uid);
-
         mDatabase.child(item).setValue(new_data);
     }
 
