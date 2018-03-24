@@ -19,14 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     final private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     final private FirebaseUser mCurrentUser = mAuth.getCurrentUser();
-    final private String uid = mCurrentUser.getUid();
+    final private String uid = mCurrentUser != null ? mCurrentUser.getUid() : null;
     final private DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                         }
                         String item_name = req_arr[index];
-                        if(!old_data.perName.equals(uid)) {
+                        if(!(old_data != null && old_data.perName.equals(uid))) {
                             updateData(old_data, result.getContents());
                             Toast.makeText(MainActivity.this,item_name,Toast.LENGTH_LONG).show();
                         }

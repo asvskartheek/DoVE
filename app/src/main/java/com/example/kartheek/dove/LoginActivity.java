@@ -35,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //noinspection ConstantConditions
                 String name = mName.getEditText().getText().toString();
+                //noinspection ConstantConditions
                 String pass = mPassword.getEditText().getText().toString();
 
                 signIn(name,pass);

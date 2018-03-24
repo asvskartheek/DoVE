@@ -45,10 +45,15 @@ public class RegisterActivity extends AppCompatActivity {
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //noinspection ConstantConditions
                 String name = mName.getEditText().getText().toString();
+                //noinspection ConstantConditions
                 String pass = mPassword.getEditText().getText().toString();
+                //noinspection ConstantConditions
                 String phone = mPhone.getEditText().getText().toString();
+                //noinspection ConstantConditions
                 String email = mEmail.getEditText().getText().toString();
+                //noinspection ConstantConditions
                 String year = mYear.getEditText().getText().toString();
                 createUser(name,pass,phone,email,year);
             }
@@ -65,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference usersRef = database.getReference("Users");
                             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            //noinspection ConstantConditions
                             String uid = currentUser.getUid();
 
                             HashMap<String,String> userMap = new HashMap<>();
