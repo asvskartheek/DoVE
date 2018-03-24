@@ -16,9 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * Created by kartheek on 17/2/18.
- */
+
 
     public class TripodListAdapter extends RecyclerView.Adapter<TripodListAdapter.TripodListViewHolder>{
 
@@ -47,7 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 
         @Override
         public int getItemCount() {
-            return 7;
+            return mNoOfItems;
         }
 
 
@@ -85,6 +83,7 @@ import com.google.firebase.database.ValueEventListener;
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.child("Tripod"+position).child("perName").getValue(String.class);
                         mTimeStamp.setText(dataSnapshot.child("Tripod"+position).child("time").getValue(String.class));
+                        assert value != null;
                         mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                     }
 

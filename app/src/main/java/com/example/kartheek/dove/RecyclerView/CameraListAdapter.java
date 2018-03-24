@@ -2,15 +2,11 @@ package com.example.kartheek.dove.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kartheek.dove.HistoryActivity;
 import com.example.kartheek.dove.R;
@@ -20,10 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-/**
- * Created by kartheek on 16/2/18.
- */
 
 public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.CameraListViewHolder>{
 
@@ -51,7 +43,7 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
 
     @Override
     public int getItemCount() {
-        return 8;
+        return mNoOfItems;
     }
 
 
@@ -89,6 +81,7 @@ public class CameraListAdapter extends RecyclerView.Adapter<CameraListAdapter.Ca
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.child("Camera"+position).child("perName").getValue(String.class);
                     mTimeStamp.setText(dataSnapshot.child("Camera"+position).child("time").getValue(String.class));
+                    assert value != null;
                     mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                 }
 

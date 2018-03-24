@@ -24,8 +24,9 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
 
 
     private String[] BaseNames;
-
+    private static int mNoOfItems;
     public BaseListAdapter(int nItems){
+        mNoOfItems = nItems;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
 
     @Override
     public int getItemCount() {
-        return 7;
+        return mNoOfItems;
     }
 
 
@@ -84,6 +85,7 @@ public class BaseListAdapter extends RecyclerView.Adapter<BaseListAdapter.BaseLi
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.child("Base"+position).child("perName").getValue(String.class);
                     mTimeStamp.setText(dataSnapshot.child("Base"+position).child("time").getValue(String.class));
+                    assert value != null;
                     mPersonName.setText(dataSnapshot.child("Users").child(value).child("name").getValue(String.class));
                 }
 

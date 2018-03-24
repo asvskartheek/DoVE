@@ -85,7 +85,7 @@ public class MemoryFragment extends Fragment {
 
 
         //Change the adapter according to item
-        MemoryListAdapter mAdapter = new MemoryListAdapter(3);
+        MemoryListAdapter mAdapter = new MemoryListAdapter(7);
         mCameraList.setAdapter(mAdapter);
 
         return view;
