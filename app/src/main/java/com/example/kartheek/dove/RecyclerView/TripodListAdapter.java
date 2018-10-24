@@ -2,10 +2,12 @@ package com.example.kartheek.dove.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.kartheek.dove.HistoryActivity;
@@ -52,6 +54,7 @@ import com.google.firebase.database.ValueEventListener;
         class TripodListViewHolder extends RecyclerView.ViewHolder{
 
             TextView mTripodName, mPersonName, mTimeStamp;
+            Button mCallBtn;
             Context context;
 
             TripodListViewHolder(View itemView,final Context context){
@@ -60,6 +63,7 @@ import com.google.firebase.database.ValueEventListener;
                 mTripodName = itemView.findViewById(R.id.item_name);
                 mPersonName = itemView.findViewById(R.id.person_name);
                 mTimeStamp = itemView.findViewById(R.id.time_stamp);
+                mCallBtn = itemView.findViewById(R.id.call_btn);
 
                 this.context = context;
 
@@ -93,6 +97,28 @@ import com.google.firebase.database.ValueEventListener;
                     }
                 });
 
+                mCallBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                String user = dataSnapshot.child("Camera"+position).child("perName").getValue(String.class);
+                                assert user != null;
+                                String phone_number = dataSnapshot.child("Users").child(user).child("phone").getValue(String.class);
+                                Uri uri = Uri.parse("tel:"+phone_number);
+                                Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+                                if (intent.resolveActivity(context.getPackageManager())!=null){
+                                    context.startActivity(intent);
+                                }
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                    }
+                });
             }
         }
 }
